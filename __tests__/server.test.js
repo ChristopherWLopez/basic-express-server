@@ -2,6 +2,7 @@
 
 const { server } = require("../src/server");
 const supertest = require("supertest");
+const { request } = require("express");
 
 const mocRequest = supertest(server);
 
@@ -17,7 +18,7 @@ let emptyName = {
 // When present, output JSON to the client with this shape: { name: "name provided" }
 // Without a name in the query string, force a “500” error
 
-describe("Person Route", ()=> {
+// describe("Person Route", ()=> {
 
 // it("respond 200 if there is a string", async ()=>{
 //     const response = await mocRequest.get("/person").query(testName)
@@ -47,12 +48,24 @@ describe("Person Route", ()=> {
 //         })
 // })
 
-    test(
-        'When present, output JSON to the client with this shape: { name: "name provided" }' , async () =>{
-             const response  = await request.get("/person?name=Lopez");
-             expect(response.statusCode).toBe(200);
-             expect({ name : 'Lopez' }).toEqual({ name : 'Lopez' });
-        });
+// }) 
 
-    // test.todo('Without a name in the query string, force a “500” error');
-}) 
+describe("Person Route", ()=> {
+
+    test( "Expects a query string from the user with a “name” property ", async ()=> {
+            const response = await mocRequest.get("")
+    })  
+
+    test( "When query string present, output JSON to the client with this shape: { name: 'name provided' }" , async () =>{
+             const response  = await mocRequest.get("/person?name=Lopez");
+             expect(response.status).toBe(200);
+             expect(response.body).toEqual({ name : 'Lopez' });
+        });
+        
+    test( "Without a name in the query string, force a “500” error", async ()=> {
+            const response = await mocRequest.get("/person");
+            expect(response.status).toBe(500);
+        });
+        
+        // test.todo('Without a name in the query string, force a “500” error');
+    });

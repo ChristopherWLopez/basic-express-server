@@ -12,7 +12,24 @@ const serverError = require("./error-handlers/500");
 //     res.status(200).send(person)
 // });
 
-app.get("/person", (req, res)=> res.send(''));
+
+// add logger MW
+app.get('/', (req, res, next) =>{
+    res.status(200).send("welcome, doctor");
+});
+
+
+// app.get("/person", validator,  (req, res)=> {
+//     res.status(200).send({ name: req.name });
+// });
+
+app.get('/person', (req,res)=>{
+    if(req.query.name){
+        res.status(200).send({ name: req.query.name });
+    }else{
+        res.status(500).send();
+    }
+});
 
 app.use( notFound );
 

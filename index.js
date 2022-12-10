@@ -1,8 +1,10 @@
 'use strict';
 
-// const { config } = require('dotenv').config();
-const server = require('src/server.js');
+const { config } = require('dotenv')
+const { start } = require('./src/server');
 
 
 
-server.start(3000);
+start(3000);
+
+// entry point "power button"
