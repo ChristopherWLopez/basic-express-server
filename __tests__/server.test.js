@@ -12,6 +12,18 @@ let testName = {
 
 let emptyName = {
 }
+
+test('hello endpoint', async () =>{
+    const response = await mocRequest.get("/hello");
+    console.log(response.res.text);
+    expect(response.res.text).toBe("Hello!");
+});
+
+
+test('goodbye endpoint', async ()=>{
+    const response = await mocRequest.get('/goodbye');
+    expect(response.res.text).toBe('goodbye');
+})
 // Method: GET
 // Path: /person
 // Expects a query string from the user with a “name” property
