@@ -1,15 +1,16 @@
 
 const { Sequelize } = require('sequelize');
-const { makeRecord,makePedalBoard } = require('./record-Model');
+const { makePedalBoard } = require('./pedalboard-Model');
+const { makeRecord } = require('./record-Model');
+require('dotenv').config();
 
 
 const DATABASE_URL = 
-        process.env.NODE_ENV === "test" 
-        ? 'sqlite::memory:'
-        :process.env.DATABASE_URL;
-         
+        process.env.NODE_ENV === "test" ? 'sqlite::memory:': process.env.DATABASE_URL;
+         console.log(DATABASE_URL);
+// const DATABASE_URL = 'sqlite:memory:';
 const CONNECTION_OPTIONS = 
-process.env.NODE_ENV === 'test'
+        process.env.NODE_ENV === 'test'
 ?{}
 :{
         ssl: {

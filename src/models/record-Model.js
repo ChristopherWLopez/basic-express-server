@@ -33,14 +33,14 @@
 
 const { DataTypes } = require('sequelize');
 
-function record(){
-    return sequelize.define('Record', {
+function makeRecord(sequelize){
+    return sequelize.define('Records', {
         bandName: DataTypes.STRING,
-        album: DataTypes.STRING
-    })
+        recordName: DataTypes.STRING
+    });
 
 }
 
 module.exports ={
-    user,
+    makeRecord,
 }

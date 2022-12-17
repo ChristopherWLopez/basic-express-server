@@ -10,7 +10,7 @@ function handle500(req, res) {
   res.status(500).json(object);
 }
 
-function error500(err, req, res, next) {}
+// function error500(err, req, res, next) {}
 
 // server.get('/pass_error', (req, res, next) =>{
 //     res.status(500).send({ message: 'there was a issue' });

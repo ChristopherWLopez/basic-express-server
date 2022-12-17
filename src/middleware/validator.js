@@ -6,7 +6,7 @@ const validator = (req, res, next) => {
         req.name = req.query.name
         next()
     } else {
-        next('Failed validation: No name in query!')
+        next('Failed validation: No name in query!');
     }
 }
 
