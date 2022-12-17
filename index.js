@@ -1,10 +1,13 @@
 'use strict';
 
-const { config } = require('dotenv')
-const { start } = require('./src/server');
 
+const { sequelize } = require('./src/models');
 
+require('dotenv').config();
 
-start(3000);
+const { start } = require('./src/server.js');
+
+sequelize.sync().then(()=>start(process.env.PORT ?? 3000) )
+.catch( e => console.log(e.message));
 
 // entry point "power button"
