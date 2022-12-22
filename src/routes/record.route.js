@@ -8,7 +8,7 @@ const recordRoutes = express.Router();
 // /RESTful  route declarations
 
 // URL
-
+// REST declarations
 recordRoutes.get("/record", getRecords);
 recordRoutes.get("/record/:id", getRecord);
 recordRoutes.post("/record", createRecord);

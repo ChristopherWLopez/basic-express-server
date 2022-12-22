@@ -1,7 +1,7 @@
 // const e = require("express");
 const express = require("express");
 
-const { Pedal } = require("../models/index");
+const { Pedal, Style } = require("../models/index");
 
 const pedalRoutes = express.Router();
 
@@ -22,7 +22,7 @@ async function getPedals(_, res) {
 
 async function getPedal(req, res, next) {
   const id = req.params.id;
-  const pedal = await Pedal.findOne({ where: { id: id } });
+  const pedal = await Pedal.findOne({ where: { id: id }, include: Style });
   if (pedal === null) {
     next();
   }
@@ -35,8 +35,14 @@ async function createPedal(req, res) {
   const pedalName = req.body.pedalName;
   const pedal = await Pedal.create({
     pedalType,
-    pedalName
+    pedalName,
   });
+  
+  const styles  = req.body.style ?? [];
+  for (const name of styles){
+    await style.createStle({name});
+  }
+
   res.json(pedal);
 }
 
