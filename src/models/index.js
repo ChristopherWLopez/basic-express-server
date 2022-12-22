@@ -41,6 +41,7 @@ Style.hasMany(Pedal);
 Pedal.belongsTo(Style);
 
 // auth
+
 const User = makeUser(sequelize);
 
 
