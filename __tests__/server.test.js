@@ -72,8 +72,4 @@ describe("Person Route", () => {
         expect(response.status).toBe(500);
     });
 
-    test("No endPoint", async ()=> {
-        const res = await mockRequest.get("/")
-        expect(res.statusCode).toEqual(404)
-    })
 });
