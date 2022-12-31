@@ -29,7 +29,8 @@ app.use(recordRoutes);
 
 app.use(pedalRoutes);
 
-app.get("/person", validator, (req, res) => {
+app.get("/person", validator, (req, res) => 
+{
   // if (req.query.name) {
     res.status(200).send({ name: req.query.name });
   // } else {
