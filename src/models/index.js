@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const { makePedalBoard } = require("./pedalboard-Model");
 const { makeRecord } = require("./record-Model");
-const { Collection } = require("./collection.model");
+// const { Collection } = require("./collection.model");
 // const { makeUser } = require("../auth/models/users-model");
 
 const DATABASE_URL =
@@ -46,10 +46,11 @@ const Pedal = makePedalBoard(sequelize);
 
 module.exports = {
   sequelize,
-  // Record,
-  // Pedal,
+  Record,
+  Pedal,
   // Pedal_Collection,
+
   // came across a way of doing it this way: I am trying to finish this assignment
-  Pedal_Collection: new Collection(Pedal),
-  recordCollection: new Collection(Record),
+  // Pedal_Collection: new Collection(Pedal),
+  // recordCollection: new Collection(Record),
 };
