@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 
-function makePedalBoard(sequelize){
+function pedaltrain(sequelize){
     return sequelize.define('Pedal', {
         pedalType: DataTypes.STRING,
         pedalName: DataTypes.STRING,
@@ -8,4 +8,4 @@ function makePedalBoard(sequelize){
     });
 }
 
-module.exports = { makePedalBoard }; 
+module.exports = pedaltrain
