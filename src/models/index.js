@@ -44,10 +44,12 @@ const Pedal = makePedalBoard(sequelize);
 // auth
 // const User = makeUser(sequelize);
 
+
 module.exports = {
   sequelize,
   Record,
   Pedal,
+  
   // Pedal_Collection,
 
   // came across a way of doing it this way: I am trying to finish this assignment
