@@ -1,4 +1,10 @@
+// const { DataTypes } = require("sequelize");
 
+// function makeCollection(sequelize) {
+//   return sequelize.define("Pedal_Collection", {
+//     name: DataTypes.STRING,
+//   });
+// }
 
 class Collection {
   constructor(model) {

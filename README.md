@@ -14,7 +14,9 @@ basic-express-server with test
 
 [PR](https://github.com/BedlaminGoliath/basic-express-server/pull/11https://github.com/BedlaminGoliath/basic-express-server/pull/11)
 
-<!-- ## LAB - Class 04 -->
+## LAB - Class 04
+
+[PR](https://github.com/BedlaminGoliath/basic-express-server/pull/11https://github.com/BedlaminGoliath/basic-express-server/pull/11)
 
 ### Author: Christopher Lopez
 
