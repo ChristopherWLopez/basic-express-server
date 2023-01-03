@@ -2,8 +2,8 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const { makePedalBoard } = require("./pedalboard-Model");
 const { makeRecord } = require("./record-Model");
-const { makeStyle } = require("./style.model");
-const { makeUser } = require("../auth/models/users-model");
+// const { Collection } = require("./collection.model");
+// const { makeUser } = require("../auth/models/users-model");
 
 const DATABASE_URL =
   process.env.NODE_ENV === "test"
@@ -34,20 +34,24 @@ if (process.env.NODE_ENV === "test") {
 const Record = makeRecord(sequelize);
 const Pedal = makePedalBoard(sequelize);
 
+// different approach: use my class and methods. passing in a model
 
-const Style = makeStyle(sequelize);
-
-Style.hasMany(Pedal);
-Pedal.belongsTo(Style);
+// attemps at association
+// Pedal.hasMany(Pedal_Type);
+// Pedal_Collection.hasMany(Pedal);
+// Pedal.belongsTo(Pedal_Collection);
 
 // auth
-
-const User = makeUser(sequelize);
+// const User = makeUser(sequelize);
 
 
 module.exports = {
   sequelize,
   Record,
   Pedal,
-  Style,
+  // Pedal_Collection,
+
+  // came across a way of doing it this way: I am trying to finish this assignment
+  // Pedal_Collection: new Collection(Pedal),
+  // recordCollection: new Collection(Record),
 };

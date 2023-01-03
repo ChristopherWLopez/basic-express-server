@@ -1,9 +1,14 @@
-// const e = require("express");
+
 const express = require("express");
 
-const { Pedal, Style } = require("../models/index");
+// const { Pedal ,Pedal_Collection } = require("../models/index");
 
-const pedalRoutes = express.Router();
+// attempts
+const { Pedal } = require("../models/index");
+
+
+
+const pedalRoutes = express();
 
 // /RESTful  route declarations
 
@@ -15,6 +20,11 @@ pedalRoutes.post("/pedal", createPedal);
 pedalRoutes.put("/pedal/:id", updatePedal);
 pedalRoutes.delete("/pedal/:id", deletePedal);
 
+// async function getPedals(_, res) {
+//   const allPedals = await Pedal_Collection.get();
+//   res.json(allPedals);
+// }
+
 async function getPedals(_, res) {
   const allPedals = await Pedal.findAll();
   res.json(allPedals);
@@ -22,27 +32,32 @@ async function getPedals(_, res) {
 
 async function getPedal(req, res, next) {
   const id = req.params.id;
-  const pedal = await Pedal.findOne({ where: { id: id }, include: Style });
+  const pedal = await Pedal.findOne({ where: { id: id }});
   if (pedal === null) {
     next();
-  }
-  res.json(pedal);
+  } else {
+    res.json(pedal);
+  } 
 }
 
 async function createPedal(req, res) {
-  // how to declare band name
+
+
   const pedalType = req.body.pedalType;
-  const pedalName = req.body.pedalName;
+  const pedalName = req.body.pedalName
   const pedal = await Pedal.create({
     pedalType,
     pedalName,
-  });
-  
-  const styles  = req.body.style ?? [];
-  for (const name of styles){
-    await style.createStle({name});
-  }
-
+  })
+  // what I had before
+  // const styles  = req.body.style ?? [];
+  // for (const name of styles){
+  //   await styles.createStyle({name});
+  // }
+  // const collections  = req.body.collection ?? [];
+  // for (const name of collections){
+  //   await collections.createPedal_Collection({ name });
+  // pedal.setPedal_Collection([allCollections]);
   res.json(pedal);
 }
 
@@ -53,7 +68,7 @@ async function deletePedal(req, res, next) {
   if (pedal === null) {
     next();
   } else {
-    await Pedal.destroy({ where: { id } });
+    await pedal.destroy({ where: { id } });
     res.json({});
   }
 }
@@ -70,7 +85,8 @@ async function updatePedal(req, res) {
     let updatedPedal = {
       pedalType,
       pedalName,
-    };
+    }
+    
     pedal = await pedal.update(updatedPedal);
     res.status(200).json(pedal);
   }

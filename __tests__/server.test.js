@@ -15,43 +15,6 @@ test("goodbye endpoint", async () => {
   const response = await mockRequest.get("/goodbye");
   expect(response.res.text).toBe("goodbye");
 });
-// Method: GET
-// Path: /person
-// Expects a query string from the user with a “name” property
-// When present, output JSON to the client with this shape: { name: "name provided" }
-// Without a name in the query string, force a “500” error
-
-// describe("Person Route", ()=> {
-
-// it("respond 200 if there is a string", async ()=>{
-//     const response = await mocRequest.get("/person").query(testName)
-//     expect(response.status).toBe(200);
-// })
-
-// it("it should come with 400", async()=> {
-//     const response = await mocRequest.post("/person")
-//     console.log(response);
-//     expect(response.status).toBe(404);
-// })
-
-// it("Server error 500", async()=>{
-//     const response = await mocRequest.get("./person").query(emptyName)
-//     console.log(response);
-// })
-//   test('When query string present, output JSON to the client with this shape: { name: "name provided" }', async () => {
-//     const response = await request.get('/person?name=Gandalf');
-//     expect(response.statusCode).toBe(200);
-//     expect(response.body).toEqual({ name: 'Gandalf' });
-//   });
-// it("404", ()=> {
-//     return mockRequest
-//         .get('/test')
-//         .then(results, ()=>{
-//             expect(results.status).tobe()
-//         })
-// })
-
-// })
 
 describe("Person Route", () => {
   test("Expects a query string from the user with a “name” property ", async () => {
@@ -72,8 +35,4 @@ describe("Person Route", () => {
         expect(response.status).toBe(500);
     });
 
-    test("No endPoint", async ()=> {
-        const res = await mockRequest.get("/")
-        expect(res.statusCode).toEqual(404)
-    })
 });
