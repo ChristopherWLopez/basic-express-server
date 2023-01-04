@@ -4,11 +4,13 @@ const {User} = require('../models');
 
 const authRoutes = express();
 
+authRoutes.use(express.json())
 //post request to the signup route
 authRoutes.post('/signup', signup);
 
-
 authRoutes.post('signin', signin);
+
+
 
 async function signup(req,res,next){
 
@@ -31,15 +33,13 @@ async function signin(req,res,next){
     const [username, password] = authorization.split(':');
     let user = await user.findLoggedIn(username, password);
     if(user){
-        res.status(200).send({ username: user.username});
+        res.status(200).send({ username: user.username}); 
     }else{
         next(new Error('Invalid login'));
     }
 }
 
-authRoutes.use(express.json())
-authRoutes.post('/signup',signup);
-authRoutes.post('/signin', signin);
+
 
 
 module.exports = {authRoutes};

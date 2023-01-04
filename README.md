@@ -20,6 +20,14 @@ basic-express-server with test
 
 ### Author: Christopher Lopez
 
+## Lab - Class 06
+
+## How
+
+ This basic auth takes in the data that is sent from the client side through the req.body this is then taken in on the server side through this specific model/ structure that we have. We take this info and We take that info through the header of the request in this format `Authorization: Basic< username : password>` this info is taken in 
+
+[pr](https://github.com/BedlaminGoliath/basic-express-server/pull/7)
+
 ### Links and Resources
 
 - [ci/cd](http://xyz.com) (GitHub Actions)
