@@ -9,9 +9,11 @@ const serverError = require("./error-handlers/500");
 const logger = require("../src/middleware/logger");
 const { recordRoutes } = require("./routes/record.route");
 const { pedalRoutes } = require("./routes/pedal.route");
+const { authRoutes } = require('./auth/index');
 
 
 app.use(express.json());
+app.use(authRoutes);
 
 app.use(logger);
 
