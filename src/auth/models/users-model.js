@@ -18,7 +18,7 @@ function makeUser(sequelize){
         return user;
     };
 
-    User.findloggedIn = async (username, password) => {
+    User.findLoggedIn = async (username, password) => {
         const user = await User.findOne({ where: { username } });
         if (user == null){
             return null;
