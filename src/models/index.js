@@ -2,6 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const { makePedalBoard } = require("./pedalboard-Model");
 const { makeRecord } = require("./record-Model");
+const { makeUser } = require('../auth/models/users-model')
 // const { Collection } = require("./collection.model");
 // const { makeUser } = require("../auth/models/users-model");
 
@@ -31,6 +32,7 @@ if (process.env.NODE_ENV === "test") {
   sequelize = new Sequelize(process.env.DATABASE_URL, CONNECTION_OPTIONS);
 }
 
+const AuthUser = makeUser(sequelize);
 const Record = makeRecord(sequelize);
 const Pedal = makePedalBoard(sequelize);
 
@@ -49,6 +51,7 @@ module.exports = {
   sequelize,
   Record,
   Pedal,
+  AuthUser,
   
   // Pedal_Collection,
 

@@ -1,17 +1,17 @@
 'use strict';
 
 const supertest = require('supertest');
-const { server } = require('../src/server');
-const { sequelize } = require('../src/models/index');
+const { server } = require('../src/server.js');
+const { sequelize } = require('../src/models/index.js');
 // an instance of the req via the server through supertest
 const req = supertest(server);
+
 
 
 
 beforeAll(async ()=>{await sequelize.sync();});
 
 afterAll(async ()=>{await sequelize.drop();});
-
 
 // create a function to help to help create a test instance of the user
 const userCreated = async ()=>{
