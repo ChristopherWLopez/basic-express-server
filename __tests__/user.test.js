@@ -9,9 +9,12 @@ const req = supertest(server);
 
 
 
+=======
+
 beforeAll(async ()=>{await sequelize.sync();});
 
 afterAll(async ()=>{await sequelize.drop();});
+
 
 // create a function to help to help create a test instance of the user
 const userCreated = async ()=>{
@@ -24,7 +27,11 @@ const userCreated = async ()=>{
 
 
 describe('Users for testing', ()=> {
-
+    
+    beforeAll(async ()=>{await sequelize.sync();});
+    
+    afterAll(async ()=>{await sequelize.drop();});
+    
     // name of test 
     it("testing for user creation", async ()=>{
 // getting an instance of my userCreated method
