@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 const { makePedalBoard } = require("./pedalboard-Model");
 const { makeRecord } = require("./record-Model");
 // const { Collection } = require("./collection.model");
-// const { makeUser } = require("../auth/models/users-model");
+const { makeUser } = require("../auth/models/users-model");
 
 const DATABASE_URL =
   process.env.NODE_ENV === "test"
@@ -42,13 +42,14 @@ const Pedal = makePedalBoard(sequelize);
 // Pedal.belongsTo(Pedal_Collection);
 
 // auth
-// const User = makeUser(sequelize);
+const User = makeUser(sequelize);
 
 
 module.exports = {
   sequelize,
   Record,
   Pedal,
+  User,
   
   // Pedal_Collection,
 
