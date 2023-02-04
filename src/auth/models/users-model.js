@@ -1,3 +1,4 @@
+
 const { DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 
@@ -43,6 +44,28 @@ return User;
 //     }
 //     return null;
 //   };
+=======
+const { DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
+
+
+const COMPLEXITY = 5;
+
+function makeUser(sequelize){
+    // making a user table
+    const User = sequelize.define('User', {
+        username: DataTypes.STRING,
+        password: DataTypes.STRING,
+    });
+
+
+    User.createWithHashed = async (username, password) => {
+        password = await bcrypt.hash(password, COMPLEXITY);
+        console.log("Creating New User", username, password);
+        const user = await User.create({ username, password })
+        return user;
+    };
+
 
 
 
